@@ -385,16 +385,20 @@
         }
         
         .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            color: var(--heineken-white);
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
-            animation: titleGlow 3s ease-in-out infinite alternate;
-            display: inline-block;  /* ADICIONE ESTA LINHA */
-    vertical-align: middle; /* ADICIONE ESTA LINHA */
-        }
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;  /* ✅ ADICIONE ESTA LINHA */
+    padding-top: 1rem; /* ✅ ADICIONE ESTA LINHA */
+    color: var(--heineken-white);
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    display: block;          /* ✅ MUDE DE inline-block PARA block */
+    text-align: center;      /* ✅ ADICIONE ESTA LINHA */
+    line-height: 1.1;        /* ✅ ADICIONE ESTA LINHA */
+    min-height: 1.2em;       /* ✅ ADICIONE ESTA LINHA */
+}
         
         @keyframes titleGlow {
             from { text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4); }
