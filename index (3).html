@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGL Brazil - Heineken Global Partnership 2025</title>
+    
+    <!-- HEINEKEN Core Font (using Montserrat as closest match) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --heineken-green: #007F2D;
+            --heineken-red: #E30613;
+            --heineken-silver: #BDBCBC;
+            --heineken-white: #FFFFFF;
+            --heineken-gold: #D4AF37;
+            --light-bg: #F8F9FA;
+            --light-green: rgba(0, 127, 45, 0.1);
+            --dark-green: #005A20;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Open Sans', Arial, sans-serif;
+            background: var(--light-bg);
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--heineken-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeOut 2s ease-in-out 1.5s forwards;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loader-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .loader-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Heineken Technological Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--heineken-green) 0%, var(--dark-green) 60%, #003d18 100%);
+            overflow: hidden;
+        }
+        
+        /* Heineken Tech Background with Stars */
+        .space-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, var(--heineken-gold), transparent),
+                radial-gradient(2px 2px at 40% 70%, rgba(0, 127, 45, 0.8), transparent),
+                radial-gradient(1px 1px at 90% 20%, var(--heineken-white), transparent),
+                radial-gradient(1px 1px at 60% 90%, var(--heineken-silver), transparent),
+                radial-gradient(2px 2px at 30% 60%, rgba(227, 6, 19, 0.6), transparent),
+                radial-gradient(1px 1px at 80% 50%, var(--heineken-gold), transparent);
+            background-size: 200px 200px, 300px 300px, 150px 150px, 250px 250px, 180px 180px, 220px 220px;
+            animation: starfield 60s linear infinite;
+        }
+        
+        @keyframes starfield {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        /* Heineken Technological Grid Overlay */
+        .tech-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 127, 45, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 127, 45, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.4;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Central Heineken Technological Globe */
+        .tech-globe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.4), rgba(0, 127, 45, 0.3), rgba(0, 90, 32, 0.2));
+            border: 3px solid rgba(0, 127, 45, 0.6);
+            box-shadow: 
+                0 0 60px rgba(0, 127, 45, 0.5),
+                inset 0 0 60px rgba(212, 175, 55, 0.3),
+                0 0 120px rgba(227, 6, 19, 0.2);
+            animation: globeRotate 30s linear infinite;
+        }
+        
+        @keyframes globeRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Heineken Connection Lines */
+        .connection-lines {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+        }
+        
+        .geometric-line {
+            position: absolute;
+            background: linear-gradient(45deg, var(--heineken-green), var(--heineken-gold));
+            animation: pulseLine 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        .line-1 {
+            top: 50%;
+            left: 0;
+            width: 150px;
+            height: 3px;
+            transform-origin: left;
+            animation-delay: 0s;
+        }
+        
+        .line-2 {
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 150px;
+            transform-origin: top;
+            animation-delay: 0.5s;
+        }
+        
+        .line-3 {
+            top: 50%;
+            right: 0;
+            width: 150px;
+            height: 3px;
+            transform-origin: right;
+            animation-delay: 1s;
+        }
+        
+        .line-4 {
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            height: 150px;
+            transform-origin: bottom;
+            animation-delay: 1.5s;
+        }
+        
+        /* Diagonal lines */
+        .line-5 {
+            top: 25%;
+            left: 25%;
+            width: 120px;
+            height: 3px;
+            transform: rotate(45deg);
+            animation-delay: 2s;
+        }
+        
+        .line-6 {
+            top: 25%;
+            right: 25%;
+            width: 120px;
+            height: 3px;
+            transform: rotate(-45deg);
+            animation-delay: 2.5s;
+        }
+        
+        /* Heineken Connection Nodes */
+        .connection-nodes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+        }
+        
+        .node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--heineken-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--heineken-gold);
+            animation: nodePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes nodePulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.8); opacity: 1; }
+        }
+        
+        .node-1 { top: 20%; left: 50%; animation-delay: 0s; }
+        .node-2 { top: 35%; right: 20%; animation-delay: 0.3s; }
+        .node-3 { top: 65%; right: 20%; animation-delay: 0.6s; }
+        .node-4 { bottom: 20%; left: 50%; animation-delay: 0.9s; }
+        .node-5 { top: 65%; left: 20%; animation-delay: 1.2s; }
+        .node-6 { top: 35%; left: 20%; animation-delay: 1.5s; }
+        .node-7 { top: 50%; left: 10%; animation-delay: 1.8s; }
+        .node-8 { top: 50%; right: 10%; animation-delay: 2.1s; }
+        
+        /* Heineken Orbital Rings */
+        .orbital-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 2px solid rgba(0, 127, 45, 0.4);
+            border-radius: 50%;
+            animation: orbitRotate 20s linear infinite;
+        }
+        
+        .ring-1 {
+            width: 500px;
+            height: 500px;
+            transform: translate(-50%, -50%);
+            animation-duration: 25s;
+        }
+        
+        .ring-2 {
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            animation-duration: 35s;
+            animation-direction: reverse;
+        }
+        
+        .ring-3 {
+            width: 700px;
+            height: 700px;
+            transform: translate(-50%, -50%);
+            animation-duration: 45s;
+        }
+        
+        @keyframes orbitRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Enhanced World Map with Real Continents */
+        .world-map {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 360px;
+            height: 360px;
+            opacity: 0.8;
+            animation: worldRotate 60s linear infinite;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        @keyframes worldRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Heineken Particle Effects */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--heineken-green);
+            border-radius: 50%;
+            animation: floatParticle 10s linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: var(--heineken-white);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            display: inline-block;  /* ADICIONE ESTA LINHA */
+    vertical-align: middle; /* ADICIONE ESTA LINHA */
+        }
+        
+        @keyframes titleGlow {
+            from { text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4); }
+            to { text-shadow: 3px 3px 15px rgba(227, 6, 19, 0.6), 0 0 60px rgba(0, 127, 45, 0.5); }
+        }
+        
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 500;
+            color: var(--heineken-white);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-credentials {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .credential {
+            background: rgba(0, 127, 45, 0.25);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(212, 175, 55, 0.5);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            min-width: 200px;
+            box-shadow: 0 10px 35px rgba(0, 127, 45, 0.3);
+        }
+        
+        .credential:hover {
+            transform: translateY(-8px);
+            background: rgba(227, 6, 19, 0.25);
+            border-color: var(--heineken-red);
+            box-shadow: 0 20px 50px rgba(227, 6, 19, 0.4);
+        }
+        
+        .credential-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--heineken-white);
+            display: block;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        }
+        
+        .credential-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: var(--heineken-white);
+        }
+        
+        /* Improved Download Buttons - LEGÍVEIS E UNIFORMES */
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .download-btn {
+            background: var(--heineken-white);
+            color: var(--heineken-green);
+            padding: 1.4rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--heineken-green);
+            text-align: center;
+            min-height: 65px;
+            width: 100%;
+        }
+        
+        .download-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 127, 45, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .download-btn:hover:before {
+            left: 100%;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            background: var(--heineken-red);
+            color: var(--heineken-white);
+            border-color: var(--heineken-white);
+        }
+        
+        /* Header - CORRIGIDO SEM SOBREPOSIÇÃO */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--heineken-white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: var(--heineken-white);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--heineken-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            color: var(--heineken-green);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--heineken-red);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--heineken-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 8rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .section-white {
+            background: var(--heineken-white);
+            color: #333;
+        }
+        
+        .section-light {
+            background: var(--light-bg);
+            color: #333;
+        }
+        
+        .section-green {
+            background: var(--light-green);
+            color: #333;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--heineken-green);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--heineken-red);
+        }
+        
+        /* Card Styles */
+        .card {
+            background: var(--heineken-white);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 127, 45, 0.1);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--heineken-green);
+        }
+        
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--heineken-green);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .card-icon {
+            color: var(--heineken-red);
+            transform: scale(1.1);
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--heineken-green);
+        }
+        
+        .card-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        /* Downloads Section - PERFEITAMENTE CENTRALIZADO */
+        .downloads-section {
+            background: var(--heineken-white);
+            padding: 8rem 0;
+            text-align: center;
+        }
+        
+        .downloads-card {
+            background: var(--heineken-white);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 127, 45, 0.1);
+            border: 2px solid var(--light-green);
+        }
+        
+        .downloads-card .section-title {
+            color: var(--heineken-green);
+            margin-bottom: 3rem;
+        }
+        
+        .downloads-card .download-buttons {
+            margin: 3rem 0;
+        }
+        
+        .downloads-card .download-btn {
+            background: var(--heineken-green);
+            color: var(--heineken-white);
+            border-color: var(--heineken-green);
+        }
+        
+        .downloads-card .download-btn:hover {
+            background: var(--heineken-red);
+            border-color: var(--heineken-red);
+            transform: translateY(-8px) scale(1.05);
+        }
+        
+        .downloads-description {
+            font-family: 'Montserrat', sans-serif;
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Alternating Sections */
+        .full-width-section {
+            width: 100%;
+            padding: 8rem 0;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--heineken-green);
+            color: var(--heineken-white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--heineken-white);
+        }
+        
+        /* Star decorations */
+        .star {
+            color: var(--heineken-red);
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .hero-credentials {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .download-buttons {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .downloads-card {
+                margin: 0 1rem;
+                padding: 3rem 2rem;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .tech-globe {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .world-map {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .connection-lines {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* File structure info */
+        .file-info {
+            background: var(--light-green);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--heineken-green);
+            border: 1px solid var(--heineken-green);
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">PGL Brazil</div>
+            <div class="loader-text">Connecting the World</div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="img/logo.png" alt="PGL Logistics" class="logo-img">
+                
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#differentials">Diferenciais</a></li>
+                    <li><a href="#downloads">Propostas</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Heineken Technological Hero Section -->
+    <section class="hero" id="home">
+        <!-- Heineken Tech Background -->
+        <div class="space-background"></div>
+        
+        <!-- Heineken Technological Grid -->
+        <div class="tech-grid"></div>
+        
+        <!-- Particles -->
+        <div class="particles"></div>
+        
+        <!-- Orbital Rings -->
+        <div class="orbital-ring ring-1"></div>
+        <div class="orbital-ring ring-2"></div>
+        <div class="orbital-ring ring-3"></div>
+        
+        <!-- Central Heineken Technological Globe -->
+        <div class="tech-globe"></div>
+        
+        <!-- Enhanced World Map with Real Continents -->
+        <svg class="world-map" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="worldGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#007F2D;stop-opacity:0.9" />
+                    <stop offset="50%" style="stop-color:#005A20;stop-opacity:0.7" />
+                    <stop offset="100%" style="stop-color:#003d18;stop-opacity:0.5" />
+                </radialGradient>
+                <filter id="continentGlow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Detailed World Continents -->
+            <!-- North America -->
+            <path d="M80 110 Q85 100 95 105 L105 108 Q120 110 135 115 L150 118 Q170 122 190 128 L210 135 Q230 142 245 152 L260 162 Q275 175 280 192 L285 210 Q282 228 275 245 L265 260 Q250 275 230 285 L210 292 Q190 298 170 295 L150 290 Q130 283 115 272 L100 260 Q88 245 85 228 L82 210 Q85 192 88 175 L92 158 Q95 140 98 123 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- South America -->
+            <path d="M180 280 Q190 275 205 280 L220 285 Q240 292 255 305 L270 318 Q280 335 285 355 L290 375 Q288 395 283 415 L275 435 Q265 450 250 460 L235 468 Q220 472 205 470 L190 465 Q175 458 165 448 L155 435 Q150 420 152 405 L155 390 Q158 375 162 360 L168 345 Q175 330 180 315 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- Europe -->
+            <path d="M300 100 Q310 95 325 100 L340 105 Q360 110 375 118 L390 126 Q405 138 412 155 L418 172 Q415 190 408 205 L398 220 Q385 232 370 240 L355 245 Q340 248 325 245 L310 240 Q295 233 285 223 L275 210 Q270 195 272 180 L275 165 Q278 150 282 135 L287 120 Q292 105 297 102 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- Africa -->
+            <path d="M310 240 Q320 235 335 240 L350 245 Q370 252 385 262 L400 272 Q415 285 420 302 L425 320 Q422 340 417 358 L410 375 Q400 390 385 400 L370 408 Q355 412 340 410 L325 405 Q310 398 300 388 L290 375 Q285 360 287 345 L290 330 Q293 315 297 300 L302 285 Q307 270 310 255 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- Asia -->
+            <path d="M350 120 Q370 115 395 120 L420 125 Q450 132 475 142 L500 152 Q520 165 525 185 L530 205 Q527 225 520 242 L510 258 Q495 270 475 278 L455 284 Q435 288 415 285 L395 280 Q375 273 360 263 L348 250 Q340 235 342 220 L345 205 Q348 190 352 175 L357 160 Q362 145 367 130 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- Australia -->
+            <path d="M400 350 Q415 345 435 350 L450 355 Q465 362 475 375 L485 388 Q488 405 485 420 L480 435 Q472 448 460 455 L445 460 Q430 462 415 459 L400 454 Q385 447 375 437 L365 425 Q360 410 362 395 L365 380 Q368 365 372 355 L377 350 Q385 348 392 349 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.9"/>
+            
+            <!-- Additional Geographic Details -->
+            <!-- Greenland -->
+            <path d="M200 80 Q210 75 225 80 L240 85 Q250 92 255 105 L258 118 Q255 130 248 140 L238 148 Q225 152 210 150 L195 145 Q185 138 180 128 L177 115 Q180 102 185 92 L192 85 Q198 82 203 81 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.8"/>
+            
+            <!-- Japan -->
+            <path d="M480 180 Q485 175 492 180 L498 185 Q502 192 500 200 L495 208 Q488 212 480 210 L472 205 Q468 198 470 190 L475 185 Q478 182 481 181 Z" fill="url(#worldGradient)" filter="url(#continentGlow)" opacity="0.8"/>
+        </svg>
+        
+        <!-- Heineken Connection Lines -->
+        <div class="connection-lines">
+            <div class="geometric-line line-1"></div>
+            <div class="geometric-line line-2"></div>
+            <div class="geometric-line line-3"></div>
+            <div class="geometric-line line-4"></div>
+            <div class="geometric-line line-5"></div>
+            <div class="geometric-line line-6"></div>
+        </div>
+        
+        <!-- Heineken Connection Nodes -->
+        <div class="connection-nodes">
+            <div class="node node-1"></div>
+            <div class="node node-2"></div>
+            <div class="node node-3"></div>
+            <div class="node node-4"></div>
+            <div class="node node-5"></div>
+            <div class="node node-6"></div>
+            <div class="node node-7"></div>
+            <div class="node node-8"></div>
+        </div>
+        
+        <div class="hero-content">
+            <span class="star">★</span>
+            <h1 class="hero-title">BID HEINEKEN 2025</h1>
+            <span class="star">★</span>
+            <p class="hero-subtitle">Proposta Técnica e Comercial para Frete Aéreo Internacional</p>
+            
+            <div class="hero-credentials">
+                <div class="credential">
+                    <span class="credential-number">20+</span>
+                    <span class="credential-text">Anos de Experiência</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-number">150+</span>
+                    <span class="credential-text">Países Atendidos</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-number">24/7</span>
+                    <span class="credential-text">Suporte Global</span>
+                </div>
+            </div>
+            
+            <!-- 4 Download Buttons - LEGÍVEIS E UNIFORMES -->
+            <div class="download-buttons">
+    <a href="docs/proposta_tecnica.pdf" class="download-btn" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        📄 PROPOSTA TÉCNICA
+    </a>
+    <a href="docs/proposta_tecnica2.pdf" class="download-btn" target="_blank">
+        <i class="fas fa-file-excel"></i>
+        📊 PROPOSTA COMERCIAL
+    </a>
+    <a href="docs/proposta_comercial.xlsx" class="download-btn" target="_blank">
+        <i class="fas fa-cogs"></i>
+        🔧 ESPECIFICAÇÕES OPERACIONAIS
+    </a>
+    <a href="docs/proposta_comercial2.xlsx" class="download-btn" target="_blank">
+        <i class="fas fa-chart-pie"></i>
+        📈 ANÁLISE FINANCEIRA
+    </a>
+</div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <div class="full-width-section section-white">
+        <div class="section" id="about">
+            <h2 class="section-title">Sobre a PGL </h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="card-title">Alcance Global</h3>
+                    <p class="card-text">Com mais de 20 anos no mercado, conectamos mais de 150 países através de nossa rede mundial de parceiros especializados em logística internacional.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="card-title">Frete Aéreo Especializado</h3>
+                    <p class="card-text">Expertise consolidada em frete aéreo internacional, com foco em partes e peças industriais e produtos que demandam agilidade e segurança.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">Certificações Premium</h3>
+                    <p class="card-text">Certificações internacionais IATA, FIATA, OEA e ISO, garantindo os mais altos padrões de qualidade e segurança em todas as operações.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Differentials Section -->
+    <div class="full-width-section section-green">
+        <div class="section" id="differentials">
+            <h2 class="section-title">Diferenciais Competitivos</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">Agilidade</h3>
+                    <p class="card-text">Coletas em até 48h e trânsito expresso para principais destinos</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="card-title">Visibilidade</h3>
+                    <p class="card-text">Tracking em tempo real 24/7 com alertas proativos</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Equipe Dedicada</h3>
+                    <p class="card-text">Time especializado exclusivo para a conta Heineken</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Relatórios</h3>
+                    <p class="card-text">KPIs customizados e relatórios gerenciais quinzenais</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="card-title">Sustentabilidade</h3>
+                    <p class="card-text">Rotas otimizadas para redução da pegada de carbono</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Parceria</h3>
+                    <p class="card-text">Relacionamento de longo prazo com foco em resultados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Downloads Section - PERFEITAMENTE CENTRALIZADA -->
+    <div class="downloads-section" id="downloads">
+        <div class="downloads-card">
+            <h2 class="section-title">
+                <span class="star">★</span>
+                Propostas para Download
+                <span class="star">★</span>
+            </h2>
+            <!-- 4 Download Buttons (Duplicated) - LEGÍVEIS E UNIFORMES -->
+            <div class="download-buttons">
+    <a href="docs/proposta_tecnica.pdf" class="download-btn" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        📄 PROPOSTA TÉCNICA
+    </a>
+    <a href="docs/proposta_tecnica2.pdf" class="download-btn" target="_blank">
+        <i class="fas fa-file-excel"></i>
+        📊 PROPOSTA COMERCIAL
+    </a>
+    <a href="docs/proposta_comercial.xlsx" class="download-btn" target="_blank">
+        <i class="fas fa-cogs"></i>
+        🔧 ESPECIFICAÇÕES OPERACIONAIS
+    </a>
+    <a href="docs/proposta_comercial2.xlsx" class="download-btn" target="_blank">
+        <i class="fas fa-chart-pie"></i>
+        📈 ANÁLISE FINANCEIRA
+    </a>
+</div>
+
+            <p class="downloads-description">
+                Documentos completos com especificações técnicas, condições comerciais e proposta de valor estratégico para o BID Heineken 2025. Nossa parceria representa inovação, confiabilidade e excelência em logística internacional.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="full-width-section section-light">
+        <div class="section" id="contact">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="card-title">Email</h3>
+                    <p class="card-text">importacao.sjk@pglbr.com.br</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="card-title">Telefone</h3>
+                    <p class="card-text">+55 12 3932-8106</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="card-title">PGL BRASIL SJK</h3>
+                    <p class="card-text">Av. Salmão, 325 - 8o andar - Jardim Aquarius, São José dos Campos - SP, 12246-260</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="card-title">Suporte 24/7</h3>
+                    <p class="card-text">importacao.sjk@pglbr.com.br</p>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo">PGL Brazil</div>
+            <p style="opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem;">Sua parceira estratégica em logística internacional</p>
+          
+            <p style="opacity: 0.7; font-size: 0.9rem;">&copy; 2025 PGL Logistics. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Create Heineken-themed dynamic particles
+        function createHeinekenParticles() {
+            const particleContainer = document.querySelector('.particles');
+            
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    // Vary particle colors between Heineken green and gold
+                    const colors = ['#007F2D', '#D4AF37', '#005A20'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    particleContainer.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 12000);
+                }
+            }, 400);
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.querySelector('.loader');
+                loader.style.display = 'none';
+            }, 2000);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Enhanced download button feedback
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const btnText = this.textContent.trim();
+                console.log(`Download iniciado: ${btnText}`);
+                
+                // Enhanced visual feedback with Heineken colors
+                this.style.transform = 'translateY(-8px) scale(0.95)';
+                this.style.boxShadow = '0 25px 50px rgba(0, 127, 45, 0.5)';
+                this.style.background = '#E30613';
+                this.style.borderColor = '#D4AF37';
+                
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-6px) scale(1.05)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
+                }, 300);
+            });
+        });
+        
+        // Enhanced parallax effect for Heineken hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const techGlobe = document.querySelector('.tech-globe');
+            const connectionLines = document.querySelector('.connection-lines');
+            const particles = document.querySelector('.particles');
+            const worldMap = document.querySelector('.world-map');
+            const speed = scrolled * 0.1;
+            
+            if (techGlobe) {
+                techGlobe.style.transform = `translate(-50%, -50%) scale(${1 - scrolled * 0.0002})`;
+                techGlobe.style.opacity = Math.max(0.4, 1 - scrolled / 700);
+            }
+            
+            if (connectionLines) {
+                connectionLines.style.transform = `translate(-50%, -50%) translateY(${speed}px)`;
+                connectionLines.style.opacity = Math.max(0.3, 1 - scrolled / 600);
+            }
+            
+            if (worldMap) {
+                worldMap.style.opacity = Math.max(0.4, 1 - scrolled / 500);
+            }
+            
+            if (particles) {
+                particles.style.opacity = Math.max(0.2, 1 - scrolled / 400);
+            }
+        });
+        
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections for scroll animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(40px)';
+            section.style.transition = 'all 0.8s ease';
+            observer.observe(section);
+        });
+        
+        // Enhanced mobile menu
+        const createMobileMenu = () => {
+            if (window.innerWidth <= 768) {
+                const nav = document.querySelector('.nav-links');
+                if (nav) {
+                    nav.style.display = 'none';
+                }
+            } else {
+                const nav = document.querySelector('.nav-links');
+                if (nav) {
+                    nav.style.display = 'flex';
+                }
+            }
+        };
+        
+        window.addEventListener('resize', createMobileMenu);
+        createMobileMenu();
+        
+        // Initialize Heineken particle system
+        createHeinekenParticles();
+        
+        // Enhanced console logging
+        console.log('🍺 PGL HEINEKEN PLATFORM v5.0 - IDENTIDADE RESTAURADA');
+        console.log('🌍 CORREÇÕES IMPLEMENTADAS:');
+        console.log('• ✅ Identidade Heineken restaurada (verde #007F2D base)');
+        console.log('• ✅ Botões brancos legíveis com texto verde Heineken');
+        console.log('• ✅ Globo com continentes reais detalhados');
+        console.log('• ✅ Efeitos tecnológicos em cores Heineken (verde/dourado)');
+        console.log('• ✅ Header sem sobreposição da logo');
+        console.log('• ✅ Fonte HEINEKEN Core (Montserrat) aplicada');
+        console.log('• ✅ 4 botões uniformes e funcionais');
+        
+        // Add Heineken-themed dynamic glow effects
+        setInterval(() => {
+            const nodes = document.querySelectorAll('.node');
+            nodes.forEach((node, index) => {
+                setTimeout(() => {
+                    const glowIntensity = 25 + Math.random() * 35;
+                    node.style.boxShadow = `0 0 ${glowIntensity}px #D4AF37`;
+                }, index * 150);
+            });
+        }, 4000);
+        
+        // Interactive hover effects for Heineken tech elements
+        document.querySelector('.tech-globe').addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 0 80px rgba(0, 127, 45, 0.7), inset 0 0 80px rgba(212, 175, 55, 0.4), 0 0 120px rgba(227, 6, 19, 0.3)';
+            this.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+        });
+        
+        document.querySelector('.tech-globe').addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 0 60px rgba(0, 127, 45, 0.5), inset 0 0 60px rgba(212, 175, 55, 0.3), 0 0 120px rgba(227, 6, 19, 0.2)';
+            this.style.borderColor = 'rgba(0, 127, 45, 0.6)';
+        });
+        
+        // Add card hover effects with Heineken colors
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+                this.style.boxShadow = '0 25px 60px rgba(0, 127, 45, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
+            });
+        });
+        
+        // Credentials hover effects
+        document.querySelectorAll('.credential').forEach(credential => {
+            credential.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(227, 6, 19, 0.3)';
+                this.style.borderColor = '#E30613';
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+            
+            credential.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(0, 127, 45, 0.25)';
+                this.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDikY4%2B%2FNS3AigKp7rCursUPrmwbLDuQ0r%2FmrfwXuE4pAVjq7jwTL7eJK4mWkMwuoTg92AG1A6EccjQEkbOGcDbbC8kdvfwS1%2FWY4%2FJ84ilWDnOHVNEf0RpSeRQ1uKPHuIvVKXHMjZQIolNGt%2F4E1dh%2FqCo7S4iZ7P4xzq3YMiYRRXc%2F5DiteU5I6zG9z2MJ8kckzKQaiHj6xikRzXseJDCczot9bQ63Cs7f7ru%2BB01cZVAV0meZXN3zl5idQrTgAeOFqyMWqqI6DXzLypRdeKE2hATF6z8sFCip85pajt%2FwEWNWefNIutbeup8mS3go%2FWXHDvsHqlr1yHg0%2F0C07BMmPBGpBTcRLqHszSD1uU7kh9sywfSieu7vVPEz6JGqCmUzGCt5VOpzBzyhT1XbL4YRh0ibRLpURDXSI4gasbyP7dSs1pBupJ8ZBu%2B0ZG0iRG34I218ux0EDAv4SlOKirmr3%2FG%2FjKguPZCgiWyJfdAtnXhv%2ByG%2BSQtnMbUGikbuJkgpSpchea555LW3G9%2F3ZQm4%3D";
+        window.__genspark_locale = "pt-BR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDikY4+/NS3AigKp7rCursUPrmwbLDuQ0r/mrfwXuE4pAVjq7jwTL7eJK4mWkMwuoTg92AG1A6EccjQEkbOGcDbbC8kdvfwS1/WY4/J84ilWDnOHVNEf0RpSeRQ1uKPHuIvVKXHMjZQIolNGt/4E1dh/qCo7S4iZ7P4xzq3YMiYRRXc/5DiteU5I6zG9z2MJ8kckzKQaiHj6xikRzXseJDCczot9bQ63Cs7f7ru+B01cZVAV0meZXN3zl5idQrTgAeOFqyMWqqI6DXzLypRdeKE2hATF6z8sFCip85pajt/wEWNWefNIutbeup8mS3go/WXHDvsHqlr1yHg0/0C07BMmPBGpBTcRLqHszSD1uU7kh9sywfSieu7vVPEz6JGqCmUzGCt5VOpzBzyhT1XbL4YRh0ibRLpURDXSI4gasbyP7dSs1pBupJ8ZBu+0ZG0iRG34I218ux0EDAv4SlOKirmr3/G/jKguPZCgiWyJfdAtnXhv+yG+SQtnMbUGikbuJkgpSpchea555LW3G9/3ZQm4=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
