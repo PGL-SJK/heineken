@@ -516,6 +516,36 @@
             color: var(--heineken-white);
             border-color: var(--heineken-white);
         }
+
+
+        
+
+/* ✅ ADICIONE ESTAS REGRAS PARA CORRIGIR O PROBLEMA */
+.download-btn:active,
+.download-btn:focus {
+    background: var(--heineken-white) !important;
+    color: var(--heineken-green) !important;
+    border-color: var(--heineken-green) !important;
+    outline: none;
+    transform: translateY(-2px);
+}
+
+/* Resetar após o clique */
+.download-btn:active:hover,
+.download-btn:focus:hover {
+    background: var(--heineken-white) !important;
+    color: var(--heineken-green) !important;
+    border-color: var(--heineken-green) !important;
+}
+
+
+
+
+
+
+
+
+
         
         /* Header - CORRIGIDO SEM SOBREPOSIÇÃO */
         .header {
@@ -1252,25 +1282,38 @@
                 }
             });
         });
+
+
+
         
         // Enhanced download button feedback
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const btnText = this.textContent.trim();
-                console.log(`Download iniciado: ${btnText}`);
-                
-                // Enhanced visual feedback with Heineken colors
-                this.style.transform = 'translateY(-8px) scale(0.95)';
-                this.style.boxShadow = '0 25px 50px rgba(0, 127, 45, 0.5)';
-                this.style.background = '#E30613';
-                this.style.borderColor = '#D4AF37';
-                
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-6px) scale(1.05)';
-                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
-                }, 300);
-            });
-        });
+       // ✅ SUBSTITUA PELO CÓDIGO CORRIGIDO:
+document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const btnText = this.textContent.trim();
+        console.log(`Download iniciado: ${btnText}`);
+        
+        // Feedback visual sem alterar cor
+        this.style.transform = 'translateY(-2px) scale(0.98)';
+        this.style.boxShadow = '0 15px 30px rgba(0, 127, 45, 0.3)';
+        
+        // Resetar para branco após um breve momento
+        setTimeout(() => {
+            this.style.background = 'var(--heineken-white)';
+            this.style.color = 'var(--heineken-green)';
+            this.style.borderColor = 'var(--heineken-green)';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+            this.blur(); // Remove o foco
+        }, 200);
+    });
+});
+
+
+
+
+
+
         
         // Enhanced parallax effect for Heineken hero section
         window.addEventListener('scroll', () => {
